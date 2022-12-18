@@ -1,0 +1,60 @@
+CODING:
+SQL command to create Table “Paccount”
+
+SQL>Create table paccount (accno number, accnamevarchar(30), balance number, opdate
+date);
+Table created.
+
+SQL command to create Table “AuditAccount”
+
+SQL>Create table auditaccount(accno number, accname varchar(30), balance number,
+uname
+varchar (30), tdate date);
+
+Table created.
+
+SQL> create or replace trigger audi
+
+2 before update on paccount
+3 for each row
+4 declare
+5 uname varchar (30);
+6 tdate date;
+7 begin
+8 select user into uname from dual;
+9 selectsysdate into tdate from dual;
+10 insert into auditaccount values(:old.accno, :old.accname, :old.balance, uname, tdate);
+11 end;
+12 /
+
+Trigger created.
+
+SQL> insert into paccount values(&accno,'&accname',&balance,'&tdate');
+Enter value for accno: 1002
+Enter value for accname: Kavitha
+Enter value for balance: 1500
+Enter value for tdate: 2-jan-2020
+old 1: insert into paccount values(&accno,'&accname',&balance,'&tdate')
+new 1: insert into paccount values(1002,'Kavitha',1500,'2-jan-2020')
+1 row created.
+
+SQL> /
+
+Enter value for accno: 1003
+Enter value for accname: Sumathi
+Enter value for balance: 2500
+Enter value for tdate: 5-jan-2020
+old 1: insert into paccount values(&accno,'&accname',&balance,'&tdate')
+new 1: insert into paccount values(1003,'Sumathi',2500,'5-jan-2020')
+1 row created.
+
+SQL> select * from auditaccount;
+
+no rows selected
+
+SQL> update paccount
+
+2 setaccname='Sumathi.R' where accno=1003;
+1 row updated.
+
+SQL> select * from auditaccount;

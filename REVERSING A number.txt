@@ -1,0 +1,16 @@
+SQL> declare
+2 n number;
+3 i number;
+4 rev number: =0;
+5 r number;
+6 begin
+7 n: =&n;
+8 while n>0
+9 loop
+10 r: =mod(n,10);
+11 rev: =(rev*10) +r;
+12 n: =trunc(n/10);
+13 end loop;
+14 dbms_output.put_line('reverse is '||rev);
+15 end;
+16 /

@@ -1,0 +1,15 @@
+SQL> create table Area (Radius number (5), area number (14,2));
+Table created.
+SQL> declare
+2 area number (5,2);
+3 radius number (1): =3;
+4 pi constant number (3,2): =3.14;
+5 begin
+6 while radius<=7
+7 loop
+8 area: =pi*radius*radius;
+9 insert into Area values (radius,area);
+10 radius: =radius+1;
+11 end loop;
+12 end;
+13 /

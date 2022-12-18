@@ -1,0 +1,38 @@
+SQL> create table Accounts (Account_id varchar (5), Name varchar (20), Bal number (7,2));
+Table created.
+SQL> insert into Accounts values ('AC001','Anuj',5000);
+1 row created.
+SQL> insert into Accounts values ('AC002','Robert',10000);
+1 row created.
+SQL> insert into Accounts values ('AC003','Mita',5000);
+1 row created.
+SQL> insert into Accounts values ('AC004','Sunita',15000);
+1 row created.
+SQL> insert into Accounts values ('AC005','Melba',10000);
+1 row created.
+SQL> SELECT * FROM Accounts;
+ACCOU NAME BAL
+----------- -------------------- ----------
+AC001 Anuj 5000
+AC002 Robert 10000
+AC003 Mita 5000
+AC004 Sunita 15000
+AC005 Melba 10000
+SQL> set serveroutput on;
+SQL> declare
+2 acct_balance number (7,2);
+3 acct_no varchar2(6);
+4 debit_amt number (7,2): =2000.00;
+5 min_bal constant number (7,2): =500.00;
+6 Begin
+7 acct_no: =&acct_no;
+8 select bal into acct_balance
+9 from accounts
+10 where account_id=acct_no;
+11 acct_balance: =acct_balance-debit_amt;
+12 if acct_balance>=min_bal then
+13 update accounts set bal=bal-debit_amt
+14 where account_id=acct_no;
+15 end if;
+16 end;
+17 /
