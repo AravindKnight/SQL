@@ -1,133 +1,37 @@
-SQL> CREATE TABLE Department (Stud_Id number, Stud_Name varchar (20), Dept_name varchar (5),
+CREATE TABLE Department (Stud_Id number, Stud_Name varchar (20), Dept_name varchar (5),
 College_name varchar (30), Age number, Mobile number, Email varchar (25));
 
-Table created.
+desc Department;
 
-SQL> desc Department;
+Insert into Department values (1001, 'Vijay', 'BCA','SONA COLLEGE',19,9898924561,
+'vijay@gmail.com'); (X5)
 
-Name Null? Type
---------------------------- ------------ --------------------------------
-STUD_ID NUMBER
-STUD_NAME VARCHAR2(20)
-DEPT_NAME VARCHAR2(5)
-COLLEGE_NAME VARCHAR2(30)
-AGE NUMBER
-MOBILE NUMBER
-EMAIL VARCHAR2(25)
+select * from Department;
 
-SQL> Insert into Department values (1001, 'Vijay', 'BCA','SONA COLLEGE',19,9898924561,
-'vijay@gmail.com');
-1 row created.
+ALTER TABLE Department ADD Result varchar (5);
 
-SQL> Insert into Department values (1002, 'Sudha', 'BCA','SONA COLLEGE',18,9892451161,
-'sudha@gmail.com');
-1 row created.
+DESC Department;
 
-SQL> Insert into Department values (1002, 'Rosy', 'BBA','VAIGAI COLLEGE',20,9843216785,
-'rosy@gmail.com');
-1 row created.
+ALTER TABLE Department rename column Stud_Name to Name;
 
-SQL> Insert into Department values (1003, 'Rosy', 'BBA','VAIGAI COLLEGE',20,9843216785,
-'rosy@gmail.com');
-1 row created.
+desc department;
 
-SQL> Insert into Department values (1004, 'Priya', 'BBA','VAIGAI COLLEGE',22,9234216785,
-'priya@gmail.com');
-1 row created.
+ALTER TABLE Department drop column AGE;
 
-SQL> Insert into Department values (1005, 'Avinash', 'BA','VAIGAI COLLEGE',20,9234234575,
-'avinash@gmail.com');
-1 row created.
+DESC DEPARTMENT;
 
-SQL> select * from Department;
+ALTER TABLE Department MODIFY NAME VARCHAR2(30);
 
-STUD_ID STUD_NAME DEPT COLLEGE_NAME AGE MOBILE EMAIL
-------------- -------------------- ---------- -------------------------- ------- ---------------- ------------
-1001 Vijay BCA SONA COLLEGE 19 9898924561 vijay@gmail.com
-1002 Sudha BCA SONA COLLEGE 18 9892451161 sudha@gmail.com
-1003 Rosy BBA VAIGAI COLLEGE 20 9843216785 rosy@gmail.com
-1004 Priya BBA VAIGAI COLLEGE 22 9234216785 priya@gmail.com
-1005 Avinash BA VAIGAI COLLEGE 20 9234234575 avinash@gmail.com
-6 rows selected.
+DESC DEPARTMENT;
 
-SQL> ALTER TABLE Department ADD Result varchar (5);
-Table altered.
+rename Department to Depart;
 
-SQL> DESC Department;
-Name Null? Type
------------------------------------------ -------------
-STUD_ID NUMBER
-STUD_NAME VARCHAR 2(20)
-DEPT_NAME VARCHAR 2(5)
-COLLEGE_NAME VARCHAR 2(30)
-AGE NUMBER
-MOBILE NUMBER
-EMAIL VARCHAR 2(25)
-RESULT VARCHAR (5)
+DESC DEPART;
 
-SQL> ALTER TABLE Department rename column Stud_Name to Name;
-Table altered.
+TRUNCATE TABLE DEPARTMENT;
 
-SQL> desc department;
-Name Null? Type
----------------------------------- -------- ----------------------------
-STUD_ID NUMBER
-NAME VARCHAR2(20)
-DEPT_NAME VARCHAR2(5)
-COLLEGE_NAME VARCHAR2(30)
-AGE NUMBER
-MOBILE NUMBER
-EMAIL VARCHAR2(25)
+DESC DEPARTMENT
 
-SQL> ALTER TABLE Department drop column AGE;
-Table altered.
+drop table Depart;
 
-SQL> DESC DEPARTMENT;
-Name Null? Type
--------------------------------- -------- ----------------------------
-STUD_ID NUMBER
-NAME VARCHAR2(20)
-DEPT_NAME VARCHAR2(5)
-COLLEGE_NAME VARCHAR2(30)
-MOBILE NUMBER
-EMAIL VARCHAR2(25)
-SQL> ALTER TABLE Department MODIFY NAME VARCHAR2(30);
-Table altered.
-
-SQL> DESC DEPARTMENT;
-Name Null? Type
---------------------------------- -------- ----------------------------
-STUD_ID NUMBER
-NAME VARCHAR2(30)
-DEPT_NAME VARCHAR2(5)
-COLLEGE_NAME VARCHAR2(30)
-MOBILE NUMBER
-EMAIL VARCHAR2(25)
-SQL> rename Department to Depart;
-Table renamed.
-
-SQL> DESC DEPART;
-Name Null? Type
----------------------------------- -------- ----------------------------
-STUD_ID NUMBER
-NAME VARCHAR2(30)
-DEPT_NAME VARCHAR2(5)
-COLLEGE_NAME VARCHAR2(30)
-MOBILE NUMBER
-EMAIL VARCHAR2(25)
-SQL> TRUNCATE TABLE DEPARTMENT;
-Table truncated.
-
-SQL> DESC DEPARTMENT
-Name Null? Type
-------------------------------- -------- ----------------------------
-STUD_ID NUMBER
-NAME VARCHAR2(30)
-DEPT_NAME VARCHAR2(5)
-COLLEGE_NAME VARCHAR2(30)
-MOBILE NUMBER
-EMAIL VARCHAR2(25)
-SQL> drop table Depart;
-Table dropped.
-
-SQL> desc depart;
+desc depart;
