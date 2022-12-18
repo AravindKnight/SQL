@@ -1,84 +1,35 @@
+CONSTRAINTS AND VERIFICATION BY INSERT COMMAND
+----------------------------------------------
+
 SQL> create table Student (stud_id varchar2(10) not null, stud_name varchar2(25), lastname varchar2(20),
 gender char, DOB date, community char (3), mobile_no number (10), primary key (stud_id, stud_name);
-SQL> Table created
 
 SQL> insert into Student values (‘&stud_id,’&stud_name’,’&lastname’,’&gender’, ‘&DOB’,
 ’&community’, ‘&mobile_no’);
-Enter values for stud_no: 21UGBCA21
-Enter values for stud_name: Manu
-Enter values for lastname: Kumar
-Enter values for gender: F
-Enter values for DOB: 10-AUG-2003
-Enter values for mobile_no: 9876567899
-1 row created.
 
-SQL>/
-Enter values for stud_no :21UGBCA22
-Enter values for stud_name: RAJIV
-Enter values for lastname: VELAN
-Enter values for gender: M
-Enter values for DOB :12-JAN-2003
-Enter values for mobile_no :7674656789
-1 row created.
-
-SQL>/
-Enter values for stud_no :21UGBCA14
-Enter values for stud_name: RAMKUMAR
-Enter values for lastname: KUMARAN
-Enter values for gender: M
-Enter values for DOB :10-SEP-2003
-Enter values for mobile_no: 6321656789
-1 row created.
-
-SQL>/
-Enter values for stud_no:21UGBCA25
-Enter values for stud_name: RAJIV
-Enter values for lastname: SARAVANAN
-Enter values for gender: M
-Enter values for DOB :24-APR-2003
-Enter values for mobile_no :6231255789
-1 row created.
+SQL>/ (X3)
 
 SQL>SELECT * FROM STUDENT;
+
 SQL> insert into Student values (‘&stud_id,’&stud_name’,’&lastname’,’&gender’,’&DOB’,’&community’,
 &mobile_no);
-Enter values for stud_no :21UGBCA25
-Enter values for stud_name: RAJIV
-Enter values for lastname: SARAVANAN
-Enter values for gender: M
-Enter values for DOB: 20-NOV-2002
-Enter values for mobile_no : 9344567894
-Error at line 1: cannot validate- primary key violated
+
 SQL>/
-Enter values for stud_no :
-Enter values for stud_name : AKSHAYA
-Enter values for lastname : VINODHLAL
-Enter values for gender : F
-Enter values for DOB :2 0-NOV-2002
-Enter values for mobile_no : 9344567894
-Error at line 1: column contains NULL values; cannot alter to NOT NULL
+
 SQL>CREATE TABLE ACCOUNTS (ACC_NO VARCHAR (10), CUST_NAME VARCHAR (25),
 BAL_AMT NUMBER (8,2), Jdate date);
+
 SQL>ALTER TABLE ACCOUNTS ADD CONSTRAINT PKEY_ACCOUNTS PRIMARY
 KEY(ACC_NO);
+
 (OR)
+
 SQL> ALTER TABLE ACCOUNTS ADD PRIMARY KEY(ACC_NO);
+
 SQL>insert into accounts values (‘&Acc_no’,’&cust_name’, &bal_amt,’&date’);
-Enter values for Acc_no : ac12345
-Enter values for cust_name : Aswini Devi
-Enter values for bal_amt : 45987.50
-Enter values for Jdate : 11-feb-2022
-1 row inserted
+
 SQL>/
-Enter values for Acc_no :ac12345
-Enter values for cust_name:Rajkumar
-Enter values for bal_amt :23400
-Enter values for Jdate :123455
-Error at line 1: cannot validate- primary key violated
+
 SQL> alter table accounts drop primary key;
+
 SQL> insert into accounts values(‘&Acc_no’, ’&cust_name’, &bal_amt,’&date’);
-Enter values for Acc_no :ac12345
-Enter values for cust_name:Rajkumar
-Enter values for bal_amt :23400
-Enter values for Jdate :123455
-1 row inserted
